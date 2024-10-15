@@ -15,4 +15,12 @@ def dice(dice_list):
     return dice_list[j]
 
 result=dice(dice_list)
-print(result)
+
+def players():
+    num_players=int(input('Enter the number of players:'))
+    player_list=[]
+    for i in range(num_players):
+        name_players=input('Enter the names of the players:')
+        player_list.append(name_players)
+    return player_list
+pl=players()
