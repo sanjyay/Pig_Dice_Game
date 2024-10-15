@@ -14,8 +14,6 @@ def dice(dice_list):
     
     return dice_list[j]
 
-result=dice(dice_list)
-
 def players():
     num_players=int(input('Enter the number of players:'))
     player_list=[]
@@ -23,4 +21,18 @@ def players():
         name_players=input('Enter the names of the players:')
         player_list.append(name_players)
     return player_list
-pl=players()
+
+#to convert players list to dictationary
+def convert(list):
+    player_dict={}
+    for i in range(0,len(list)):
+        player_dict[list[i]]=0
+    return player_dict
+
+def main():
+    pl_list=players()
+    pl_dict=convert(pl_list)
+    print('The current standings',pl_dict)
+    # roll=dice(dice_list)
+    # print('The roll',roll)
+main()
