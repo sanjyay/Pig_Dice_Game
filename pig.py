@@ -15,16 +15,23 @@ def dice():
     return dice_list[j]
 
 def players():
-    num_players=int(input('Enter the number of players:'))
-    player_list=[]
-    for i in range(num_players):
-        name_players=input('Enter the names of the players:')
-        player_list.append(name_players)
-    #to convert players list to dictationary
-    player_dict={}
-    for i in range(0,len(player_list)):
-        player_dict[player_list[i]]=0 #initially all players have 0 points
-    return player_dict,player_list
+    while True:
+        num_players=input('Enter the number of players:')
+    
+        if num_players.isdigit():
+            num_players=int(num_players)
+            player_list=[]
+            for i in range(num_players):
+                name_players=input('Enter the names of the players:')
+                player_list.append(name_players)
+            #to convert players list to dictationary
+            player_dict={}
+            for i in range(0,len(player_list)):
+                player_dict[player_list[i]]=0 #initially all players have 0 points
+            return player_dict,player_list
+            break
+        else:
+            print('Enter a valid number')
 
 #game
 def game():
@@ -57,11 +64,12 @@ def game():
     else:
         print('None of the players scored')
         print(player_dict)
+def main():
+    print('The current standing',player_dict)
+    game()
 #global variable used in other functions
 player_dict,player_list=players()
-def main():
-    print('The current standings',player_dict)
-    game()
+
 main()
 
 
