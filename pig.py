@@ -5,14 +5,13 @@
 
 import time
 import random
-dice_list=[1,2,3,4,5,6]    
 
 #the dice will be 1-6
 def dice():
     dice_list=[1,2,3,4,5,6]    
-    #for i in range(len(dice_list)):
-    j=random.randint(0,len(dice_list)-1) #j chooses a random value from 1-6
-    #    dice_list[i],dice_list[j]=dice_list[j],dice_list[i]
+    for i in range(len(dice_list)):
+        j=random.randint(0,len(dice_list)-1) #j chooses a random value from 1-6
+        dice_list[i],dice_list[j]=dice_list[j],dice_list[i] #randomizing the list and choosing a random number from list
     return dice_list[j]
 
 def players():
@@ -24,42 +23,45 @@ def players():
     #to convert players list to dictationary
     player_dict={}
     for i in range(0,len(player_list)):
-        player_dict[player_list[i]]=0
+        player_dict[player_list[i]]=0 #initially all players have 0 points
     return player_dict,player_list
 
 #game
 def game():
     for i in range(len(player_list)):
         print('Player',player_list[i],'will start the game')
-        time.sleep(3)
+        time.sleep(1)
         while True:
-            
-            a=dice()
+            roll=dice()
+            player_dict[list(player_dict.keys())[i]]+=roll
 
-            player_dict[list(player_dict.keys())[i]]+=a 
-
-            print(a)
-            query=input('Do you want to continue?(Press q to quit or Enter to continue)')
-            if query=="q":
-                print(player_dict)
-                break
-            time.sleep(1)
-            if a==1:
+            print(roll)
+            if roll==1:
                 print('Player',player_list[i],'has lost')
                 player_dict[list(player_dict.keys())[i]]=0
                 print(player_dict)
                 time.sleep(3)
                 break  
 
+            query=input('Do you want to continue?(Press q to quit or Enter to continue)')
+            if query=="q":
+                print(player_dict)
+                break
+            time.sleep(1)
 
+    flag=all(value==0 for value in player_dict.values())
+    if flag==False:        
+        winner_pt=max(player_dict.values())
+        winner=[keys for keys in player_dict if player_dict[keys]==winner_pt]
+        print('The winner is ',winner)
+    else:
+        print('None of the players scored')
+        print(player_dict)
+#global variable used in other functions
 player_dict,player_list=players()
 def main():
-    
-    
     print('The current standings',player_dict)
     game()
-    # roll=dice(dice_list)
-    # print('The roll',roll)
 main()
 
 
