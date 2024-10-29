@@ -30,7 +30,7 @@ def players():
 def game():
     for i in range(len(player_list)):
         print('Player',player_list[i],'will start the game')
-        time.sleep(1)
+        time.sleep(0.5)
         while True:
             roll=dice()
             player_dict[list(player_dict.keys())[i]]+=roll
@@ -40,14 +40,14 @@ def game():
                 print('Player',player_list[i],'has lost')
                 player_dict[list(player_dict.keys())[i]]=0
                 print(player_dict)
-                time.sleep(3)
+                time.sleep(1)
                 break  
 
             query=input('Do you want to continue?(Press q to quit or Enter to continue)')
             if query=="q":
                 print(player_dict)
                 break
-            time.sleep(1)
+            time.sleep(0.5)
 
     flag=all(value==0 for value in player_dict.values())
     if flag==False:        
