@@ -1,4 +1,6 @@
 # Pig Dice Game
+https://github.com/user-attachments/assets/91313aab-7ac0-4db4-afcf-8cc3eb4c95b6
+
 #### This is a classic pig dice game implemented using python using inbuilt libraries like time and random.
 # How to Play ?
 
